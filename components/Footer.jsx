@@ -14,9 +14,9 @@ import {
 import { motion } from "framer-motion";
 
 const servicesLinks = [
-  { name: "Pvt Ltd Registration", href: "/pvt-ltd-registration" },
-  { name: "LLP Registration", href: "/llp-registration" },
-  { name: "OPC Registration", href: "/opc-registration" },
+  { name: "Pvt Ltd Registration", href: "/private-limited-company" },
+  { name: "LLP Registration", href: "/limited-liability-partnership" },
+  { name: "OPC Registration", href: "/one-person-company" },
   { name: "GST Registration", href: "/gst-registration" },
 ];
 
