@@ -74,7 +74,7 @@ const navLinks = [
             keywords: ["goods and service tax", "indirect tax"],
           },
           {
-            href: "/services/msme-registration",
+            href: "/msme-registration",
             label: "MSME Registration",
             keywords: ["udyam", "micro small medium enterprise"],
           },
@@ -798,7 +798,7 @@ const Navbar = () => {
                   onClick={() => setIsGeneratePayOpen(true)}
                   whileHover={{ scale: 1.05 }}
                   whileTap={{ scale: 0.95 }}
-                  className="ml-4 flex items-center gap-2 bg-gradient-to-r from-green-500 to-teal-500 text-white px-4 py-2 rounded-md text-xs font-bold shadow-md hover:shadow-lg transition-all duration-300 ease-in-out"
+                  className="ml-4 flex items-center gap-2 bg-[#003a9b] text-white px-4 py-2 rounded-md text-xs font-bold hover:bg-[#ff6100] hover:scale-105 transition-all duration-300 ease-in-out"
                 >
                   <CreditCard size={14} />
                   Generate Pay

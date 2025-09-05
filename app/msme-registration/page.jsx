@@ -1,14 +1,13 @@
+"use client"; // Add this line for animations to work
+
 import Image from "next/image";
 import { CheckCircle, TrendingUp, Shield, FileText, Award, Users, Zap } from 'lucide-react';
 import MsmeForm from "@/components/forms/MsmeForm";
 import Faq from "@/components/ui/Faq";
+import { motion } from "framer-motion";
 
-// SEO Metadata for the page
-export const metadata = {
-  title: "Online MSME Registration in Delhi | Udyam Certificate - LetsMakeCompany",
-  description: "Get your MSME/Udyam registration online in Delhi with expert help. Fast processing, access to government benefits, collateral-free loans, and subsidies. Apply now for your MSME certificate.",
-  keywords: "msme registration delhi, udyam registration online, msme certificate, get udyam certificate, msme benefits, online msme registration, letsmakecompany",
-};
+// SEO Metadata for the page (Note: For client components, metadata should be handled differently, usually in a parent layout or page if needed, but we'll leave it for context)
+
 
 // Data for content sections
 const benefits = [
@@ -36,19 +35,44 @@ export default function MsmeRegistrationPage() {
   return (
     <main className="overflow-x-hidden bg-white">
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-blue-600 to-indigo-600 text-white pt-32 pb-20 md:pt-40 md:pb-28">
-         <div className="absolute inset-0 bg-[url('/grid.svg')] bg-repeat opacity-10"></div>
-         <div className="container mx-auto px-6 z-10 relative text-center">
-            <h1 className="text-4xl md:text-6xl font-extrabold leading-tight tracking-tight mb-4">
-              Online MSME & Udyam Registration
-            </h1>
-            <p className="max-w-3xl mx-auto text-lg md:text-xl text-indigo-200">
-              Unlock Government Benefits, Secure Loans, and Grow Your Business with India's Most Trusted MSME Registration Service.
-            </p>
-         </div>
-      </section>
+      <motion.section
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.8 }}
+        className="relative text-white pt-32 pb-20 md:pt-40 md:pb-28 isolate" // use 'isolate' to create a new stacking context
+      >
+        {/* Background Image */}
+        <Image
+          src="https://images.unsplash.com/photo-1541339907198-e08756dedf3f?q=80&w=2940&auto=format&fit=crop"
+          alt="MSME Registration"
+          layout="fill"
+          objectFit="cover"
+          className="-z-20" // Place it in the background
+        />
+        {/* Gradient Overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-600 to-indigo-600 opacity-80 -z-10"></div>
 
-      {/* Main Content & Form Section */}
+        <div className="container mx-auto px-6 z-10 relative text-center">
+          <motion.h1 
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.2, duration: 0.5 }}
+            className="text-4xl md:text-6xl font-extrabold leading-tight tracking-tight mb-4"
+          >
+            Online MSME & Udyam Registration
+          </motion.h1>
+          <motion.p 
+            initial={{ y: 20, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ delay: 0.4, duration: 0.5 }}
+            className="max-w-3xl mx-auto text-lg md:text-xl text-indigo-200"
+          >
+            Unlock Government Benefits, Secure Loans, and Grow Your Business with India's Most Trusted MSME Registration Service.
+          </motion.p>
+        </div>
+      </motion.section>
+      
+      {/* --- Main Content & Form Section --- */}
       <section className="py-16 md:py-24 bg-slate-50">
         <div className="container mx-auto px-6">
           <div className="flex flex-wrap lg:flex-nowrap -mx-4 gap-y-12">
@@ -84,46 +108,46 @@ export default function MsmeRegistrationPage() {
         </div>
       </section>
 
-      {/* Why Choose Us Section */}
-       <section className="py-16 md:py-24 bg-white">
-            <div className="container mx-auto px-6 text-center">
-                <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Why Partner with LetsMakeCompany?</h2>
-                <p className="max-w-2xl mx-auto text-gray-600 mb-12">We provide more than just a registration; we offer a partnership for your success.</p>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-                    {whyChooseUs.map((item, index) => (
-                        <div key={index} className="bg-slate-50 p-8 rounded-lg border border-gray-100 transform hover:scale-105 transition-transform duration-300">
-                            <div className="inline-block p-4 bg-indigo-100 rounded-full mb-4">
-                                {item.icon}
-                            </div>
-                            <h3 className="text-xl font-semibold text-gray-900 mb-2">{item.title}</h3>
-                            <p className="text-gray-600">{item.description}</p>
-                        </div>
-                    ))}
-                </div>
-            </div>
-        </section>
-
-      {/* How It Works Section */}
-      <section className="py-16 md:py-24 bg-slate-50">
-         <div className="container mx-auto px-6 text-center">
-              <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Our Simple 4-Step Registration Process</h2>
-              <p className="max-w-2xl mx-auto text-gray-600 mb-12">We've simplified the Udyam registration process to be fast, transparent, and completely hassle-free.</p>
-              <div className="relative grid grid-cols-1 md:grid-cols-4 gap-8">
-                 <div className="absolute top-8 left-0 w-full h-0.5 bg-gray-200 hidden md:block" />
-                 {processSteps.map((step, index) => (
-                    <div key={index} className="relative z-10 flex flex-col items-center">
-                        <div className="flex items-center justify-center w-16 h-16 bg-white border-2 border-indigo-500 text-indigo-600 rounded-full text-2xl font-bold shadow-lg">
-                           {index + 1}
-                        </div>
-                        <h3 className="mt-4 text-lg font-semibold text-gray-800">{step.title}</h3>
-                        <p className="mt-1 text-gray-600 text-sm">{step.description}</p>
-                    </div>
-                 ))}
+      {/* --- Why Choose Us Section --- */}
+      <section className="py-16 md:py-24 bg-white">
+          <div className="container mx-auto px-6 text-center">
+              <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Why Partner with LetsMakeCompany?</h2>
+              <p className="max-w-2xl mx-auto text-gray-600 mb-12">We provide more than just a registration; we offer a partnership for your success.</p>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                  {whyChooseUs.map((item, index) => (
+                      <div key={index} className="bg-slate-50 p-8 rounded-lg border border-gray-100 transform hover:scale-105 transition-transform duration-300">
+                          <div className="inline-block p-4 bg-indigo-100 rounded-full mb-4">
+                              {item.icon}
+                          </div>
+                          <h3 className="text-xl font-semibold text-gray-900 mb-2">{item.title}</h3>
+                          <p className="text-gray-600">{item.description}</p>
+                      </div>
+                  ))}
               </div>
-         </div>
+          </div>
       </section>
 
-      {/* FAQ Section */}
+      {/* --- How It Works Section --- */}
+      <section className="py-16 md:py-24 bg-slate-50">
+        <div className="container mx-auto px-6 text-center">
+            <h2 className="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Our Simple 4-Step Registration Process</h2>
+            <p className="max-w-2xl mx-auto text-gray-600 mb-12">We've simplified the Udyam registration process to be fast, transparent, and completely hassle-free.</p>
+            <div className="relative grid grid-cols-1 md:grid-cols-4 gap-8">
+              <div className="absolute top-8 left-0 w-full h-0.5 bg-gray-200 hidden md:block" />
+              {processSteps.map((step, index) => (
+                  <div key={index} className="relative z-10 flex flex-col items-center">
+                      <div className="flex items-center justify-center w-16 h-16 bg-white border-2 border-indigo-500 text-indigo-600 rounded-full text-2xl font-bold shadow-lg">
+                          {index + 1}
+                      </div>
+                      <h3 className="mt-4 text-lg font-semibold text-gray-800">{step.title}</h3>
+                      <p className="mt-1 text-gray-600 text-sm">{step.description}</p>
+                  </div>
+              ))}
+            </div>
+        </div>
+      </section>
+
+      {/* --- FAQ Section --- */}
       <section className="py-16 md:py-24 bg-white">
         <div className="container mx-auto px-6">
             <h2 className="text-3xl md:text-4xl font-bold text-gray-800 text-center mb-12">Frequently Asked Questions</h2>
